@@ -15,7 +15,6 @@ class Features(BaseModel):
     atemp: float
     humidity: int
     windspeed: float
-    count: int
 
 
 # 학습 코드에서 저장한 베스트 모델을 가져올 것 (bike_sharing:latest)

@@ -32,7 +32,7 @@ if __name__ == "__main__":
     logger.info("Loading data...")
     train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
 
-    _X = train_df.drop(["count"], axis=1)
+    _X = train_df.drop(["datetime", "count"], axis=1)
     y = np.log1p(train_df["count"])
 
     # X=_X, y=y로 전처리 파이프라인을 적용해 X에 저장

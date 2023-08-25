@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-bentoml = "==1.0.20"
+bentoml = "*"
 scikit-learn = "==1.2.2"
 pandas = "==2.0.0"
 numpy = "==1.24.3"
