@@ -7,23 +7,23 @@ from pydantic import BaseModel
 
 
 class Features(BaseModel):
-    bhk: int
-    size: int
-    floor: str
-    area_type: str
-    city: str
-    furnishing_status: str
-    tenant_preferred: str
-    bathroom: int
-    point_of_contact: str
+    season: int
+    holiday: int
+    workingday: int
+    weather: int
+    temp: float
+    atemp: float
+    humidity: int
+    windspeed: float
+    count: int
 
 
-# 학습 코드에서 저장한 베스트 모델을 가져올 것 (house_rent:latest)
-bento_model = bentoml.sklearn.get("house_rent:latest")
+# 학습 코드에서 저장한 베스트 모델을 가져올 것 (bike_sharing:latest)
+bento_model = bentoml.sklearn.get("bike_sharing:latest")
 model_runner = bento_model.to_runner()
 
 # "rent_house_regressor"라는 이름으로 서비스를 띄우기
-svc = bentoml.Service("rent_house_regressor", runners=[model_runner])
+svc = bentoml.Service("predict_bike_sharing", runners=[model_runner])
 
 
 @svc.api(
