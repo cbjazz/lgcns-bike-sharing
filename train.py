@@ -32,8 +32,8 @@ if __name__ == "__main__":
     logger.info("Loading data...")
     train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
 
-    _X = train_df.drop(["rent", "area_locality", "posted_on"], axis=1)
-    y = np.log1p(train_df["rent"])
+    _X = train_df.drop(["count"], axis=1)
+    y = np.log1p(train_df["count"])
 
     # X=_X, y=y로 전처리 파이프라인을 적용해 X에 저장
     logger.info("Applying a pipeline...")
@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
     # BentoML에 모델 저장
     bentoml.sklearn.save_model(
-        name="house_rent",
+        name="bike_sharing",
         model=mlflow.sklearn.load_model(
             # 베스트 모델 URI
             best_model_uri
