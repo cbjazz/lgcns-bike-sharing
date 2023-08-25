@@ -30,7 +30,7 @@ warnings.filterwarnings(action="ignore")
 
 if __name__ == "__main__":
     logger.info("Loading data...")
-    train_df = pd.read_csv(os.path.join(DATA_PATH, "house_rent_train.csv"))
+    train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
 
     _X = train_df.drop(["rent", "area_locality", "posted_on"], axis=1)
     y = np.log1p(train_df["rent"])
@@ -45,7 +45,7 @@ if __name__ == "__main__":
         os.makedirs(os.path.join(DATA_PATH, "storage"))
     X.assign(rent=y).to_csv(
         # DATA_PATH 밑에 storage 폴더 밑에 피처 데이터를 저장
-        os.path.join(DATA_PATH, "storage", "house_rent_train_features.csv"),
+        os.path.join(DATA_PATH, "storage", "bike_sharing_train_features.csv"),
         index=False,
     )
 
